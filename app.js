@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
+const appRoot = require('app-root-path');
 
 var app = express();
 
@@ -18,7 +19,6 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(req,res){
 	const fs = require('fs');	
-	const appRoot = require('app-root-path');
 	res.sendFile(appRoot + '/public/idex.html');
 });
 
@@ -38,8 +38,17 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.json({message:"Error", status:err.status || 400});
+  if(err.status == 404){
+	res.sendFile(appRoot + '/static/404.html');
+
+  }else{
+  	res.status(err.status || 500);
+  	res.json({
+		title:"Error",
+		status:err.status || 400,
+		error:err
+		});
+  }
 });
 
 module.exports = app;
