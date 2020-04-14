@@ -1,3 +1,24 @@
+// qrstamp generator 
+// 
+const config = {
+	// qrUrlBase ... QR Stamp Info page url base.
+	//   this should be a valid public web site url 
+	//   which can be accessed via HTTPS.
+	//	qrUrlBase : 'https://qrstamp.contoso.com/qrstamp/',
+	//   but you can test it internally while developing.
+	//	urlbase : 'http://192.168.0.63:3000/qrstamp/',
+	//	  (set the hostname of this node server here)
+	urlbase : 'http://192.168.0.63:3000/qrstamp/',
+
+	// organizationName ... name of your company etc.
+	//organizationName: 'QR Stamp Sample ,Co. Ltd.', //English
+	organizationName: 'QR角印サンプル株式会社', //Japanese
+
+	// representativeName ... usually the name of your company's president
+	//representativeName:'Shirushi Tsuhoda, President'	
+	representativeName:'代表取締役 角田 印'	
+}
+
 const express = require('express');
 const router = express.Router();
 const appRoot = require('app-root-path');
@@ -15,13 +36,12 @@ router.post('/', function(req, res){
 function getOrPost(req,res,comments){
 	const slugid = require('slugid');
 
-	let qrUrlBase = 'http://192.168.0.63:3000/qrstamp/';
 	const dateObj = new Date();
 	const qrFolder = getFolderNameYYYYMMDD(dateObj);
 	const qrTimeStamp = getHHNNSS(dateObj);
 	const qrPath = qrFolder + '/' + qrTimeStamp +'.' + slugid.nice();
 
-	let qrText = qrUrlBase + qrPath + '.html';
+	let qrText = config.urlbase + qrPath + '.html';
 
 	let pngPath = generateStampImage(qrFolder, qrPath,qrText);
 
@@ -122,8 +142,8 @@ function generateStampInfoHtml(htmlFolder, htmlPath, info){
 				{type:'p', content:'下記の件について確かに捺印したことを表明します。'},
 				{type:'p', content:'お手元の書類の捺印について疑義がある場合はご連絡ください。'},
 
-				{type:'p', content:'株式会社 QR角印サンプル'},
-				{type:'p', content:'代表取締役 角田 印'},
+				{type:'p', content:config.organizationName},
+				{type:'p', content:config.representativeName},
 				{type:'h3', content:'捺印日時'},
 				{type:'p', content:info.qrTimeStamp},
 				{type:'h3', content:'コメント'},
