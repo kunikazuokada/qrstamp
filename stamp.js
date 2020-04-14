@@ -48,7 +48,7 @@ function getOrPost(req,res,comments){
 	const htmlFolder = 'static/qrstamp/'+qrFolder; 
 	const htmlPath = 'static/qrstamp/'+qrPath+'.html';
 	var info={
-		qrTimeStamp: qrTimeStamp,
+		qrTimeStamp: formatTimeStampForHTML(dateObj),
 		comments: comments
 	};
 	generateStampInfoHtml(htmlFolder, htmlPath, info);
