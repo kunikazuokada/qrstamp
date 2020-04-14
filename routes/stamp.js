@@ -99,7 +99,7 @@ function generateStampImage(qrFolder, qrPath, qrText){
 		}
 	}
 	var buf = canvas.toBuffer();
-	const pngFolder = 'qrstamp/static/admin/qrstampImage/'+qrFolder; 
+	const pngFolder = 'static/admin/qrstampImage/'+qrFolder; 
 	const pngPath = 'static/admin/qrstampImage/'+qrPath+'.png';
 	mkdirp.sync(pngFolder);
 	fs.writeFileSync(pngPath,buf);
