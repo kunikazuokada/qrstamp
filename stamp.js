@@ -1,23 +1,14 @@
-// qrstamp generator 
-// 
-const config = {
-	// qrUrlBase ... QR Stamp Info page url base.
-	//   this should be a valid public web site url 
-	//   which can be accessed via HTTPS.
-	//	qrUrlBase : 'https://qrstamp.contoso.com/qrstamp/',
-	//   but you can test it internally while developing.
-	//	urlbase : 'http://192.168.0.63:3000/qrstamp/',
-	//	  (set the hostname of this node server here)
-	urlbase : 'http://192.168.0.63:3000/qrstamp/',
+const url = require('url');
+const package = require('./package.json');
+let config = package.config;
 
-	// organizationName ... name of your company etc.
-	//organizationName: 'QR Stamp Sample ,Co. Ltd.', //English
-	organizationName: 'QR角印サンプル株式会社', //Japanese
-
-	// representativeName ... usually the name of your company's president
-	//representativeName:'Shirushi Tsuhoda, President'	
-	representativeName:'代表取締役 角田 印'	
+let urlBase = new URL(config.qrUrlBase);
+if(urlBase.hostname == "localhost"){
+	const os = require('os');
+	urlBase.hostname = os.hostname();
+	config.qrUrlBase = urlBase.href;
 }
+console.log(config.qrUrlBase);
 
 const express = require('express');
 const router = express.Router();
