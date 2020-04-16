@@ -48,7 +48,6 @@
 ## 関連文書
 
 #### QR角印標準 [10_QR_STAMP_STANDARDS.md](./docs/10_QR_STAMP_STANDARDS.md)
-
 #### インストール・設定手順 [20_HOW_TO_DEPLOY.md](./docs/20_HOW_TO_DEPLOY.md)
 
 #### AWS EC2への導入例 [30_AWS_EC2_DEPLOYMENT.md](./docs/30_AWS_EC2_DEPLOYMENT.md)
