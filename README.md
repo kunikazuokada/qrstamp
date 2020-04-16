@@ -45,6 +45,14 @@
 
 
 
+## デモサイト
+
+https://qrsample.teppi.net/
+
+
+
+
+
 ## 関連文書
 
 #### QR角印考案の動機 [00_MOTIVATION.md](./docs/00_MOTIVATION.md)
