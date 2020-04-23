@@ -6,7 +6,6 @@ let urlBase = new URL(config.qrUrlBase);
 if(urlBase.hostname == "localhost"){
 	const os = require('os');
 	urlBase.hostname = os.hostname();
-	config.qrUrlBase = urlBase.href;
 }
 console.log(config.qrUrlBase);
 
@@ -32,7 +31,7 @@ function getOrPost(req,res,comments){
 	const qrTimeStamp = getHHNNSS(dateObj);
 	const qrPath = qrFolder + '/' + qrTimeStamp +'.' + slugid.nice();
 
-	let qrText = config.urlbase + qrPath + '.html';
+	let qrText = urlBase.href + '/' + qrPath + '.html';
 
 	let pngPath = generateStampImage(qrFolder, qrPath,qrText);
 
@@ -89,6 +88,7 @@ function generateStampImage(qrFolder, qrPath, qrText){
 	const cellsize = 4;
 	const cellnum = matrix.length
 	if(cellnum > 41){throw new Error('url length too long');}
+	console.log(cellnum);
 
 	const qrTop = (img.width/2) -cellsize*(cellnum / 2);
 	const qrLeft = qrTop;
@@ -96,7 +96,7 @@ function generateStampImage(qrFolder, qrPath, qrText){
 	ctx.fillStyle = 'rgba(255,255,255,1)';
 	ctx.fillRect(qrLeft-cellsize,qrTop-cellsize , cellsize*(cellnum+2), cellsize*(cellnum+2));
 
-	ctx.fillStyle = 'rgba(204,0,0,1)';
+	ctx.fillStyle = 'rgba(63,0,0,1)';
 
 	for(let x=0; x<cellnum; x++){
 		for(let y=0; y<cellnum; y++){
