@@ -96,7 +96,7 @@ function generateStampImage(qrFolder, qrPath, qrText){
 	ctx.fillStyle = 'rgba(255,255,255,1)';
 	ctx.fillRect(qrLeft-cellsize,qrTop-cellsize , cellsize*(cellnum+2), cellsize*(cellnum+2));
 
-	ctx.fillStyle = 'rgba(255,0,0,1)';
+	ctx.fillStyle = 'rgba(204,0,0,1)';
 
 	for(let x=0; x<cellnum; x++){
 		for(let y=0; y<cellnum; y++){
