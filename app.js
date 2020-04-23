@@ -20,7 +20,7 @@ app.get('/', function(req,res){
 
 
 var stampRouter = require('./stamp');
-app.use('/stamp/', stampRouter);
+app.use('/admin/stamp/', stampRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
