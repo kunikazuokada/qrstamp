@@ -4,7 +4,7 @@
 >
 > "QR Stamp" is a digital seal designed as an alternative to Japanese so called "square stamps".
 
-
+株式会社鉄飛テクノロジー QR角印について（https://www.teppi.com/column/misc/qrstamp_about） 
 
 ## QR角印は電子印鑑です
 
