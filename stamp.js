@@ -32,7 +32,6 @@ function getOrPost(req,res,comments){
 	const qrPath = qrFolder + '/' + qrTimeStamp +'.' + slugid.nice();
 
 	let qrText = urlBase.href + '/' + qrPath + '.html';
-
 	let pngPath = generateStampImage(qrFolder, qrPath,qrText);
 
 	const htmlFolder = 'static/qrstamp/'+qrFolder; 
@@ -138,7 +137,7 @@ function generateStampInfoHtml(htmlFolder, htmlPath, info){
 				{type:'h3', content:'捺印日時'},
 				{type:'p', content:info.qrTimeStamp},
 				{type:'h3', content:'コメント'},
-				{type:'p', content:info.comments}
+				{type:'p', content:info.comments.replace(/(?:\r\n|\r|\n)/g, '<br>') }
 			]
 		}
 		
