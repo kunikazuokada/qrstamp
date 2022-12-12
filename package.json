@@ -33,7 +33,7 @@
   "app-root-path": "^3.0.0",
   "canvas": "^2.6.1",
   "debug": "^4.1.1",
-  "express": "^4.17.1",
+  "express": "^4.17.3",
   "fs-extra": "^9.0.0",
   "html-creator": "^0.4.4",
   "mkdirp": "^1.0.4",
